@@ -1,0 +1,6 @@
+@DevStream.API_HostAddress = http://localhost:5276
+
+GET {{DevStream.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

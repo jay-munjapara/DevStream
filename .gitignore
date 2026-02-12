@@ -1,0 +1,10 @@
+# .NET
+bin/
+obj/
+
+# Angular
+node_modules/
+dist/
+
+# Mac
+.DS_Store
