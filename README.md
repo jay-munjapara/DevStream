@@ -47,50 +47,50 @@ Infrastructure
 # Project Structure
 ```
 DevStream/
-
-backend/
-└── DevStream.API/
-    ├── Controllers/
-    │   ├── AuthController.cs
-    │   └── DeploymentsController.cs
-    │
-    ├── Data/
-    │   └── AppDbContext.cs
-    │
-    ├── Models/
-    │   └── Deployment.cs
-    │
-    ├── Services/
-    │   └── DeploymentWorker.cs
-    │
-    ├── Properties/
-    │   └── launchSettings.json
-    │
-    ├── Program.cs
-    ├── appsettings.json
-    └── DevStream.API.csproj
-
-frontend/
-└── devstream-ui/
-    ├── src/app/
-    │   ├── pages/
-    │   │   ├── login/
-    │   │   └── deployments/
-    │   │
-    │   ├── services/
-    │   │   ├── auth.service.ts
-    │   │   └── deployments.service.ts
-    │   │
-    │   ├── interceptors/
-    │   │   └── auth.interceptor.ts
-    │   │
-    │   ├── app.routes.ts
-    │   └── app.config.ts
-    │
-    └── environments/
-
-docker-compose.yml
-README.md
+│
+├── backend/
+│   └── DevStream.API/
+│       ├── Controllers/
+│       │   ├── AuthController.cs
+│       │   └── DeploymentsController.cs
+│       │
+│       ├── Data/
+│       │   └── AppDbContext.cs
+│       │
+│       ├── Models/
+│       │   └── Deployment.cs
+│       │
+│       ├── Services/
+│       │   └── DeploymentWorker.cs
+│       │
+│       ├── Properties/
+│       │   └── launchSettings.json
+│       │
+│       ├── Program.cs
+│       ├── appsettings.json
+│       └── DevStream.API.csproj
+│
+├── frontend/
+│   └── devstream-ui/
+│       ├── src/app/
+│       │   ├── pages/
+│       │   │   ├── login/
+│       │   │   └── deployments/
+│       │   │
+│       │   ├── services/
+│       │   │   ├── auth.service.ts
+│       │   │   └── deployments.service.ts
+│       │   │
+│       │   ├── interceptors/
+│       │   │   └── auth.interceptor.ts
+│       │   │
+│       │   ├── app.routes.ts
+│       │   └── app.config.ts
+│       │
+│       └── environments/
+│
+├── docker-compose.yml
+└── README.md
 ```
 
 # Authentication Flow
