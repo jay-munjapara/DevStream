@@ -48,7 +48,7 @@ Infrastructure
 ```
 DevStream/
 │
-├── backend/
+├── backend/                # ASP.NET Core API
 │   └── DevStream.API/
 │       ├── Controllers/
 │       │   ├── AuthController.cs
@@ -63,33 +63,46 @@ DevStream/
 │       ├── Services/
 │       │   └── DeploymentWorker.cs
 │       │
+│       ├── Migrations/
+│       │   └── (EF Core migration files)
+│       │
 │       ├── Properties/
 │       │   └── launchSettings.json
 │       │
-│       ├── Program.cs
 │       ├── appsettings.json
-│       └── DevStream.API.csproj
+│       ├── Program.cs
+│       ├── DevStream.API.csproj
+│       └── Dockerfile
 │
-├── frontend/
+├── frontend/               # Angular UI
 │   └── devstream-ui/
-│       ├── src/app/
-│       │   ├── pages/
-│       │   │   ├── login/
-│       │   │   └── deployments/
+│       ├── src/
+│       │   ├── app/
+│       │   │   ├── pages/
+│       │   │   │   ├── login/
+│       │   │   │   └── deployments/
+│       │   │   │
+│       │   │   ├── services/
+│       │   │   │   ├── auth.service.ts
+│       │   │   │   └── deployments.service.ts
+│       │   │   │
+│       │   │   ├── interceptors/
+│       │   │   │   └── auth.interceptor.ts
+│       │   │   │
+│       │   │   ├── app.routes.ts
+│       │   │   └── app.config.ts
 │       │   │
-│       │   ├── services/
-│       │   │   ├── auth.service.ts
-│       │   │   └── deployments.service.ts
-│       │   │
-│       │   ├── interceptors/
-│       │   │   └── auth.interceptor.ts
-│       │   │
-│       │   ├── app.routes.ts
-│       │   └── app.config.ts
+│       │   └── environments/
 │       │
-│       └── environments/
+│       ├── angular.json
+│       ├── package.json
+│       └── Dockerfile
 │
-├── docker-compose.yml
+├── docker-compose.yml      # Full stack orchestration
+├── .github/
+│   └── workflows/      # CI pipeline
+│       └── ci.yml
+│
 └── README.md
 ```
 
