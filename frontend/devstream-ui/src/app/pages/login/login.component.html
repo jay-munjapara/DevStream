@@ -1,0 +1,17 @@
+<div style="max-width:420px;margin:48px auto;font-family:Arial;">
+    <h2>DevStream Login</h2>
+
+    <div *ngIf="error" style="color:red;margin:8px 0;">{{ error }}</div>
+
+    <label>Email</label>
+    <input [(ngModel)]="email" style="width:100%;padding:10px;margin:6px 0 12px;" />
+
+    <label>Password</label>
+    <input type="password" [(ngModel)]="password" style="width:100%;padding:10px;margin:6px 0 12px;" />
+
+    <button (click)="onLogin()" style="padding:10px 14px;">Login</button>
+
+    <p style="margin-top:16px;color:#666;">
+        <!-- Dev credentials: <b>admin@devstream.com</b> / <b>Admin123!</b> -->
+    </p>
+</div>
