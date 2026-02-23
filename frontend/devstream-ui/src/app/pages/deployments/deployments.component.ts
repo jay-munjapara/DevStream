@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { DeploymentsService, Deployment } from '../../services/deployments.service';
+import { Subscription, interval } from 'rxjs';
 
 @Component({
   selector: 'app-deployments',
@@ -12,6 +13,7 @@ import { DeploymentsService, Deployment } from '../../services/deployments.servi
   templateUrl: './deployments.component.html'
 })
 export class DeploymentsComponent {
+  private refreshSub?: Subscription;
   deployments: Deployment[] = [];
   error = '';
 
@@ -35,6 +37,10 @@ export class DeploymentsComponent {
       return;
     }
     this.load();
+    this.refreshSub = interval(4000).subscribe(() => this.load());
+  }
+  ngOnDestroy() {
+    this.refreshSub?.unsubscribe();
   }
 
   load() {
