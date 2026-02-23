@@ -3,6 +3,7 @@ using DevStream.API.Data;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using DevStream.API.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +15,11 @@ builder.Services.AddSwaggerGen();
 // SQL Server (EF Core)
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddHealthChecks()
+    .AddDbContextCheck<AppDbContext>("db");
+
+builder.Services.AddHostedService<DeploymentWorker>();
 
 // CORS (Angular dev server)
 const string CorsPolicy = "DevStreamCors";
@@ -70,6 +76,9 @@ app.UseHttpsRedirection();
 app.UseCors("DevStreamCors");
 
 app.MapGet("/", () => Results.Ok(new { name = "DevStream API", status = "running" }));
+
+app.MapHealthChecks("/health");
+app.MapGet("/healthz", () => Results.Ok(new { status = "ok" })); // simple liveness
 
 app.UseAuthentication();
 app.UseAuthorization();
