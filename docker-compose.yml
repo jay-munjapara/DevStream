@@ -11,5 +11,30 @@ services:
       - sql_data:/var/opt/mssql
     restart: always
 
+  api:
+    build:
+      context: ./backend/DevStream.API
+    container_name: devstream-api
+    environment:
+      ConnectionStrings__DefaultConnection: "Server=sqlserver,1433;Database=DevStreamDb;User Id=sa;Password=YourStrong!Passw0rd;TrustServerCertificate=True;"
+      Jwt__Key: "CHANGE_ME_TO_A_LONG_RANDOM_SECRET"
+      Jwt__Issuer: "DevStream"
+      Jwt__Audience: "DevStreamUsers"
+    ports:
+      - "8080:8080"
+    depends_on:
+      - sqlserver
+    restart: always
+
+  ui:
+    build:
+      context: ./frontend/devstream-ui
+    container_name: devstream-ui
+    ports:
+      - "4200:80"
+    depends_on:
+      - api
+    restart: always
+
 volumes:
   sql_data:
